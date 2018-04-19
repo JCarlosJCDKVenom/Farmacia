@@ -1,0 +1,35 @@
+Farmacia 'FARMA VEA'
+----------------------
+ RUC: TOSO850220GN9 
+Baltazar N. 4  
+San Antonio Coaxomulco, Tlaxcala
+Fecha: Mon Apr 16 16:42:36 COT 2018
+----------------------
+
+	>>Datos del Comprador<<
+
+Numero de Factura: 1
+Nombre: juan carlos
+RFC: 
+Direccion: 
+----------------------
+Producto	Cant.	Precio
+
+AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	20.0	1.0
+AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	20.0	1.0
+AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	20.0	1.0
+AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	20.0	1.0
+		
+		
+		
+		
+
+Total: 		$80.0
+
+----------------------
+    CON EL CORAZON EN LAS MANOS
+    GRACIAS POR SU COMPRA.
+
+
+
+
