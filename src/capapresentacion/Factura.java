@@ -444,7 +444,8 @@ public class Factura extends JFrame {
         try {
                 //se crea la conexion y las consultas
                 con = new ConectarDB();
-                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("INSERT INTO facturas (cantidad, nombre, direccion, ruc,fecha) VALUES ('"+total+"', '"+nomfac+"', '"+direccionfac+"', '"+rucfac+"', '"+fechaa.format(date)+"');");
+                Double cantidad = Double.parseDouble(total);
+                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("INSERT INTO facturas (cantidad, nombre, direccion, ruc,fecha) VALUES ('"+cantidad+"', '"+nomfac+"', '"+direccionfac+"', '"+rucfac+"', '"+fechaa.format(date)+"');");
     			
     			ps.executeUpdate();
                
@@ -664,34 +665,29 @@ if(JOptionPane.showConfirmDialog(rootPane, "Ya esta listo para imprimir la Factu
                    
                 }
                  ticket = cadena+cade+enca+cadenita+"\n\nTotal: \t\t$"+txtTotal.getText()+"\n\n----------------------\n    CON EL CORAZON EN LAS MANOS\n    GRACIAS POR SU COMPRA.\n\n\n\n";
-               //Cogemos el servicio de impresiÃ³n por defecto (impresora por defecto)
+               //Cogemos el servicio de impresión por defecto (impresora por defecto)
 PrintService service = PrintServiceLookup.lookupDefaultPrintService();
 //Le decimos el tipo de datos que vamos a enviar a la impresora
 //Tipo: bytes Subtipo: autodetectado
 DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-//Creamos un trabajo de impresiÃ³n
+//Creamos un trabajo de impresión
 DocPrintJob pj = service.createPrintJob();
  ss=new String(ticket);
 byte[] bytes;
 bytes=ss.getBytes();
 Doc doc=new SimpleDoc(bytes,flavor,null);
-
   pj.print(doc, null);
-
-
                 
                 
                String t=txtTotal.getText();
                ticket = "";
                 JOptionPane.showMessageDialog(null, "   Imprimiendo Factura");
                Factura.this.dispose();
-
             }   catch (PrintException ex1) {
                     Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex1);
                 }  catch (SQLException ex) {
                 Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         
     
     

@@ -47,8 +47,6 @@ public class Ventas extends JFrame{
 	
     int rowCount, numfac;
     ConectarDB con = null,query;
-	
-	private JPanel contentPane;
 	private JFrame frmVentas;
 	private JTextField txtNombreProducto;
 	private JTable Tproductos;
@@ -58,7 +56,6 @@ public class Ventas extends JFrame{
 	private JTextField txtPrecioUnitario;
 	String valorTexto;
 	private JTextField txtTotal;
-	private JPanel JPanel_3;
 	private JTable Tlista;
 	int j=0;
 	
@@ -124,27 +121,6 @@ public class Ventas extends JFrame{
 				} else {
 					cargarLista(valorTexto);
 				}
-				
-				
-			}
-				
-
-		    @Override
-			
-			public void keyPressed(KeyEvent arg0) {
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		        
-		    
-				
 				
 				
 			}
@@ -371,61 +347,8 @@ public class Ventas extends JFrame{
 				} catch (Exception e) {
 					// TODO: handle exception
 					JOptionPane.showMessageDialog(null, "Error "+e);
-				}
-				
-				
-				
-				
-				
-			/*	
-				
-				DefaultTableModel modelo = new DefaultTableModel(){
-					@Override
-					public boolean isCellEditable(int rowIndex, int vColIndex) {
-						return false;
-						}};
-					
-						int aux = Tproductos.getSelectedRow();
-						if (aux==1)
-						{
-						
-							JOptionPane.showMessageDialog(null, "No se a seleccionado nada de la tabla.");
-						
-						}
-						else
-						{   
-
-        
-        String nombre = Tproductos.getValueAt(aux, 1).toString();
-        String precio = Tproductos.getValueAt(aux, 2).toString();
-        float total = 0;
-		int j=0,w=0,jj=0; 
-    String aux2 = precio;
-    float tot = Float.parseFloat(aux2);
-    String cant = JOptionPane.showInputDialog("Cantidad: ");
-    //float cantidad = Float.parseFloat(cant);
-    float cantidad = Float.parseFloat(cant);
-    //float cantidad = (float)txtSalida.getText();
-    tot=tot*cantidad;
-    total=tot+total;
-    String aux3 = String.valueOf(total);
-    jTtotal.setText(aux3);
-    DefaultTableModel temp = (DefaultTableModel) 
-            Tlista.getModel();
-    Object nuevo[]= {temp.getRowCount()+1,"",""};
-    temp.addRow(nuevo);
-    
-       Tlista.setValueAt(nombre, j, 0);
-       Tlista.setValueAt(precio, j, 1);
-       Tlista.setValueAt(cant, j, 2);
-       j++;//Aumenta el contador
-
-}
-				
-		*/		
+				}				
 				j++;
-				
-				
 			}
 		});
 		frmVentas.getContentPane().add(btnSalen);

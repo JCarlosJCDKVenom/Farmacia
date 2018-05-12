@@ -3,24 +3,25 @@ Farmacia 'FARMA VEA'
  RUC: TOSO850220GN9 
 Baltazar N. 4  
 San Antonio Coaxomulco, Tlaxcala
-Fecha: Wed Apr 18 17:43:35 COT 2018
+Fecha: Sat May 12 10:40:32 CDT 2018
 ----------------------
 
 	>>Datos del Comprador<<
 
 Numero de Factura: 1
-Nombre: JUAN CARLOS
-RUC: 123456789
-Direccion: MHOIUILJ
+Nombre: 
+RUC: 
+Direccion: 
 ----------------------
 Producto	     Cant.	     Precio
 
-ALGODON COPPON x 100 gr	  5.0	  2.0 $
-ALGODON COPPON x 100 gr	  5.0	  2.0 $
-AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	  20.0	  2.0 $
-AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	  20.0	  2.0 $
+a	  4.0	  2.0 $
+a	  4.0	  2.0 $
+a	  4.0	  2.0 $
+a	  4.0	  2.0 $
+a	  4.0	  2.0 $
 
-Total: 		$100.0
+Total: 		$40.0
 
 ----------------------
   PERU SOFTWARE A SU SERVICIO
