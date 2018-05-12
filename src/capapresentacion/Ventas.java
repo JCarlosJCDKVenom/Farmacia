@@ -8,10 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-
-import com.mysql.jdbc.ResultSetMetaData;
-
 import capanegocios.Item;
 import capanegocios.Mercancia;
 import capaaccesodatos.CrudItem;
@@ -24,7 +20,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,8 +35,6 @@ import java.awt.Image;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import java.awt.Component;
-import java.awt.SystemColor;
 
 public class Ventas extends JFrame{
 	
@@ -237,25 +230,13 @@ public class Ventas extends JFrame{
 		frmVentas.getContentPane().add(lblPrecioVenta);
 
 		
-	//	String [] cabezera = {"Lote","Nombre_Producto","Cantidad","Precio","Importe"};
-		
-		
-		
-	//	JScrollPane sc = new JScrollPane(Tlista);
-		
-		
 		txtTotal = new JTextField();
 		txtTotal.setBounds(375, 647, 209, 34);
 		txtTotal.setFont(new Font("Times New Roman", Font.BOLD, 28));
 		frmVentas.getContentPane().add(txtTotal);
 		txtTotal.setColumns(10);
 		txtTotal.setHorizontalAlignment(SwingConstants.RIGHT); 
-		/*
-		JPanel panel = new JPanel();
-		panel.setBounds(30, 441, 496, 204);
-		frmVentas.getContentPane().add(panel);
 		
-		*/
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(40, 386, 1190, 240);
 		frmVentas.getContentPane().add(panel_3);
@@ -288,30 +269,25 @@ public class Ventas extends JFrame{
 	    btnSalen.setToolTipText("Añadir a la lista de Ventas");
         numfac=1;
         btnSalen.addMouseListener(new MouseAdapter() {
-
-            // agregamos el evento MouseEntered
-            // cuando el puntero pase por encima del boton
-            // ejecutará el código que este adentro de él
-            public void mouseEntered(MouseEvent evt) {
-
-            	btnSalen.setIcon(new ImageIcon(img2Salen));
-                
-            }
-
-          public void mouseExited(MouseEvent evt) {
-
-        	  btnSalen.setIcon(new ImageIcon(imgSalen));
-        	  }
+        	// agregamos el evento MouseEntered
+        	// cuando el puntero pase por encima del boton
+        	// ejecutará el código que este adentro de él
+        	public void mouseEntered(MouseEvent evt) {        		
+            	btnSalen.setIcon(new ImageIcon(img2Salen));      
+            	}
+        	public void mouseExited(MouseEvent evt) {
+        		btnSalen.setIcon(new ImageIcon(imgSalen));
+        		}
           });
-		btnSalen.addActionListener(new ActionListener() {
-			 public void mouseEntered(ActionEvent evt) {
-
-	                System.out.println("entro el mouse");
-	                btnSalen.setEnabled(false);
-	            }
-			  public void mouseExited(ActionEvent evt) {
-
-	                System.out.println("salio el mause");
+        /*accion cuando se intractua con el mause*/
+        btnSalen.addActionListener(new ActionListener() {
+        	public void mouseEntered(ActionEvent evt) {
+        		System.out.println("entro el mouse");
+        		btnSalen.setEnabled(false);
+        		}
+        	
+        	public void mouseExited(ActionEvent evt) {
+        		System.out.println("salio el mause");
 				  btnSalen.setEnabled(true);
 	            }
 			public void actionPerformed(ActionEvent arg0) {
