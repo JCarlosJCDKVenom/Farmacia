@@ -17,12 +17,16 @@ import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.print.SimpleDoc;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,9 +40,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Point;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -117,7 +125,6 @@ public class Factura extends JFrame {
 	 * Create the frame.
 	 */
 	public Factura() {
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 720);
 		this.setLocationRelativeTo(null);
@@ -125,8 +132,10 @@ public class Factura extends JFrame {
 		this.setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 0, 0));
-		contentPane.setBackground(new Color(230, 230, 250));
+		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		contentPane.setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, new ImageIcon("img/imgCruz.PNG")));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -136,7 +145,7 @@ public class Factura extends JFrame {
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128)));
 		panel.setForeground(new Color(230, 230, 250));
 		panel.setBackground(new Color(230, 230, 250));
-		panel.setBounds(10, 11, 300, 80);
+		panel.setBounds(27, 24, 293, 70);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -147,14 +156,14 @@ public class Factura extends JFrame {
 		
 		JLabel lblLaMejorAtencion = new JLabel("La mejor atencion al cliente");
 		lblLaMejorAtencion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLaMejorAtencion.setBounds(20, 40, 170, 14);
+		lblLaMejorAtencion.setBounds(20, 39, 170, 14);
 		panel.add(lblLaMejorAtencion);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setForeground(new Color(230, 230, 250));
 		panel_1.setBackground(new Color(230, 230, 250));
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128)));
-		panel_1.setBounds(640, 11, 414, 80);
+		panel_1.setBounds(630, 24, 414, 70);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -165,14 +174,14 @@ public class Factura extends JFrame {
 		
 		JLabel lblNroBoleta = new JLabel("NRO BOLETA");
 		lblNroBoleta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNroBoleta.setBounds(160, 32, 89, 15);
+		lblNroBoleta.setBounds(210, 25, 89, 15);
 		panel_1.add(lblNroBoleta);
 		
 		txtNumFac = new JTextField();
 		txtNumFac.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtNumFac.setForeground(new Color(0, 0, 0));
 		txtNumFac.setBackground(new Color(224, 255, 255));
-		txtNumFac.setBounds(132, 52, 150, 20);
+		txtNumFac.setBounds(179, 39, 150, 20);
 		txtNumFac.setEnabled(false);
 		panel_1.add(txtNumFac);
 		txtNumFac.setColumns(10);
@@ -180,7 +189,7 @@ public class Factura extends JFrame {
 		txtNumFac.setHorizontalAlignment(SwingConstants.RIGHT); 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 191, 255), new Color(0, 191, 255), new Color(0, 191, 255), new Color(0, 191, 255)));
-		panel_2.setBounds(10, 102, 1044, 220);
+		panel_2.setBounds(26, 102, 1027, 220);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -238,7 +247,7 @@ public class Factura extends JFrame {
 		txtDireccion.setBackground(new Color(224, 255, 255));
 		txtDireccion.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(47, 79, 79)));
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(123, 96, 628, 20);
+		txtDireccion.setBounds(123, 96, 847, 20);
 		panel_2.add(txtDireccion);
 		
 		txtEmpleado = new JTextField();
@@ -271,7 +280,7 @@ public class Factura extends JFrame {
 		txtApellido = new JTextField();
 		txtApellido.setBackground(new Color(224, 255, 255));
 		txtApellido.setBorder(new MatteBorder(1, 1, 2, 1, (Color) new Color(47, 79, 79)));
-		txtApellido.setBounds(482, 45, 150, 20);
+		txtApellido.setBounds(482, 45, 488, 20);
 		panel_2.add(txtApellido);
 		txtApellido.setColumns(10);
 		Date fech = fecha;
@@ -332,7 +341,7 @@ public class Factura extends JFrame {
 		
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 333, 872, 261);
+		panel_3.setBounds(27, 333, 1027, 306);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -340,7 +349,7 @@ public class Factura extends JFrame {
 		Tproductos  = new JTable (0,4);
 		Tproductos.setEnabled(false);
 		JScrollPane sc = new JScrollPane(Tproductos);
-		sc.setBounds(10, 11, 872, 261);
+		sc.setBounds(0, 0, 1027, 306);
 		 sc.setPreferredSize(new Dimension(400,150));
 		panel_3.add(sc);
 
@@ -353,20 +362,12 @@ public class Factura extends JFrame {
 		
 		txtTotal = new JTextField();
 		txtTotal.setText("0.00");
-		txtTotal.setBounds(650, 605, 215, 29);
+		txtTotal.setBounds(667, 659, 215, 29);
 		contentPane.add(txtTotal);
 		txtTotal.setColumns(10);
 		txtTotal.setHorizontalAlignment(SwingConstants.RIGHT); 
 		
-		JButton btnOk = new JButton("Ok");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			System.out.println("clickeo en el lugar equivcado xD");
-			}
-		});
-		btnOk.setBounds(918, 560, 89, 23);
-		contentPane.add(btnOk);
-		
+			
 		JButton btnImprimir = new JButton("IMPRIMIR");
 		btnImprimir.addActionListener(new ActionListener() {
 			
@@ -377,11 +378,75 @@ public class Factura extends JFrame {
 				
 			}
 		});
-		btnImprimir.setBounds(918, 608, 89, 23);
+		btnImprimir.setBounds(918, 662, 89, 23);
 		contentPane.add(btnImprimir);
 		
+		JButton btnGuardar = new JButton("BGuardar");
+		btnGuardar.setBounds(40, 647, 89, 23);
+		btnGuardar = new JButton();
+		btnGuardar.setSize(new Dimension(114, 54));
+		btnGuardar.setIcon(new ImageIcon("IMAGENES/GUARDARIMP.JPG"));
+		btnGuardar.setToolTipText("Guardar e Imprimir");
+		btnGuardar.setEnabled(false);
+		btnGuardar.setDisabledIcon(new ImageIcon("IMAGENES/GUARDARIMP2.JPG"));
+		btnGuardar.setLocation(new Point(310, 34));
+		btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {/*
+				if (TxtCliente.getText().length()==0)
+				{JOptionPane.showMessageDialog(null,"¡Ingrese el Cliente al que se realiza la venta!","Datos incompletos",2);
+				 BClientes.requestFocus();}
+				else if (CboVendedor.getSelectedIndex()==-1)
+				{JOptionPane.showMessageDialog(null,"¡Ingrese el Vendedor que realiza la venta!","Datos incompletos",2);
+				 CboVendedor.requestFocus();}
+				else if (modelo.getRowCount()==0)
+				{JOptionPane.showMessageDialog(null,"¡No ha ingresado ArtÃ­culos en esta venta!","Datos incompletos",2);
+				 BInsertar.requestFocus();}
+				else{guardar();}*/
+			}
+		});
+		contentPane.add(btnGuardar);
+		JButton bEliminar = new JButton();
+		bEliminar.setToolTipText("Eliminar registro de Cliente");
+		bEliminar.setSize(new Dimension(145, 40));
+		bEliminar.setLocation(new Point(27, 650));
+		bEliminar.setFont(new Font("Dialog", Font.BOLD, 14));
+		bEliminar.setText("Cancelar");
+		bEliminar.setMnemonic(KeyEvent.VK_E);
+		bEliminar.setIcon(new ImageIcon("img/imgCancelar.PNG"));
+		bEliminar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				int respuesta=JOptionPane.showConfirmDialog(null, "Desea cancelar la compra del cliente "+txtNombre.getText().trim()+" "+txtApellido.getText()+"?", "Eliminar compra",0, 3);
+				if (respuesta==0){
+					/*eliminar();*/
+					Factura.this.dispose();
+				}
+			}
+		});
+		contentPane.add(bEliminar);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setBounds(140, 653, 120, 40);
 		
 		
+		btnLimpiar = new JButton();
+		btnLimpiar.setToolTipText("Cancelar informaciï¿½n");
+		btnLimpiar.setSize(new Dimension(112, 41));
+		btnLimpiar.setLocation(new Point(182, 650));
+		btnLimpiar.setEnabled(false);
+		btnLimpiar.setText("Cancelar");
+		btnLimpiar.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnLimpiar.setMnemonic(KeyEvent.VK_C);
+		btnLimpiar.setIcon(new ImageIcon("img/imgCancelar.JPG"));
+		contentPane.add(btnLimpiar);
+		btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+			  try{
+				 int respuesta=JOptionPane.showConfirmDialog(null, "ï¿½Desea descartar los datos ingresados?", "Cancelar ingresos",0, 3);
+			  	 
+			     }
+			  catch(Exception s){}
+			}
+		});
 		  
 		
 	}
@@ -449,22 +514,10 @@ public class Factura extends JFrame {
     			
     			ps.executeUpdate();
                
-//                int to[] = new int[100];
-//                float prec[] = new float[100];
                 Object ex = null,precio=null;
                 Object pros=null;
                 
-                // se crea la sentecia sql y se ejecuta para hacer la modificacion
-               
-//////                FileOutputStream os = null;
-//////                try {
-//////                    os = new FileOutputStream("ticket.txt");
-//////                } catch (FileNotFoundException ex1) {
-//////                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex1);
-//////                }
-//////                  PrintStream ps = new PrintStream(os);
-                
-                
+                 
                 Ventas row = new Ventas();
                 int rowCount = Tproductos.getRowCount();
                 System.out.println("cantidad de columnas "+rowCount);
@@ -476,38 +529,14 @@ public class Factura extends JFrame {
                 String cade="----------------------\n\n\t>>Datos del Comprador<<\n\nNumero de Factura: "+txtNumFac.getText()+"\nNombre: "+nomfac+"\nRUC: "+rucfac+"\nDireccion: "+direccionfac;
               //  System.out.println("Numero de Filas: "+rowCount);
                 String enca="\n----------------------\nProducto\t     Cant.\t     Precio\n";
-                /*double subtotal = 0d;
-                for (int i = 0; i < rowCount; i++) {
-			        int cantidad = (Integer) Tproductos.getValueAt(i, 0);
-			        String descripcion = (String) Tproductos.getValueAt(i, 1);
-			        double precioUnitario = (Double) Tproductos.getValueAt(i, 2);
-			        double precioParcial = precioUnitario * cantidad;
-			        subtotal += precioParcial;
-			        Tproductos.setValueAt(precioParcial, i, 3);
-			        Producto producto1 = new Producto();
-			        producto1.setCantidad(cantidad);
-			        producto1.setDescripcion(descripcion);
-			        producto1.setPrecioParcial(precioParcial);
-			        producto1.setPrecioUnitario(precioUnitario);
-			        productos.add(producto1);
-			    }*/
+                
                 for(int x=0;x<rowCount;x++){
                 
                    producto = Tproductos.getValueAt(x,0);
                     pro = objectToString(producto);
                     
                     precio = Tproductos.getValueAt(x,1);
-        //            String pre = objectToString(prec);
-                   
                     canti = Tproductos.getValueAt(x,2);
-        //            String c = objectToString(canti);
-                   
-                    
-                   // if(pro.length()<=8) {
-                     //   pro=pro+"     ";}
-                   // if(pro.length()>15) {
-                     //   pro = pro.substring(0, 15);}
-                                
                     cadenita = cadenita+"\n"+pro+"\t  "+canti+"\t  "+precio+" $";
                    
                 }
@@ -517,10 +546,8 @@ public class Factura extends JFrame {
                     pro = objectToString(producto);
                     
                     precio = Tproductos.getValueAt(x,1);
-        //            String pre = objectToString(prec);
                    
                     canti = Tproductos.getValueAt(x,2);
-        //            String c = objectToString(canti);
                    
                     
                     if(pro.length()<=8)
@@ -537,7 +564,7 @@ public class Factura extends JFrame {
                 
                  FileOutputStream os;
  				try {
- 					os = new FileOutputStream("Archivo2.txt");
+ 					os = new FileOutputStream("Archivo.txt");
  					generarArchivoPDF();
  					//ps1.println(cadena);
  					System.out.println("se supone que se genero el pdf");
@@ -546,7 +573,7 @@ public class Factura extends JFrame {
  				} catch (FileNotFoundException e1) {
  					// TODO Auto-generated catch block
  					e1.printStackTrace();
- 					System.out.println("no se puede imprimir con boton dos");
+ 					System.out.println("no se puede imprimir");
  				} 
                String t=txtTotal.getText();
                ticket = "";
@@ -558,145 +585,7 @@ public class Factura extends JFrame {
                 Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-       
-    
-    
-
-
 	}
-	/*/public void devolver() {
-		int j;
-        ConectarDB con;
-        ResultSet rs;
-        String nomfac = txtNombre.getText();
-        String rucfac = txtIdentidad.getText();
-        String direccionfac = txtDireccion.getText();
-        String total = txtTotal.getText();
-        Date date = new Date();
-       DateFormat fechaa = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
-       System.out.println("fecha"+fechaa.format(date));
-        Object producto;
-        Object canti;
-        String cadenita = "";
-        String pro ="";
-        
-        
-if(!nomfac.equals("") || !rucfac.equals("") || !direccionfac.equals("")) {
-if(JOptionPane.showConfirmDialog(rootPane, "Ya esta listo para imprimir la Factura?","Imprimir Factura",1)==0){
-    String existe = null;
-    int e;
-        String ID = null;
-        String ticket;
-        String ss;
-        String cadena;
-        
-        try {
-                //se crea la conexion y las consultas
-                con = new ConectarDB();
-                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("INSERT INTO facturas (cantidad, nombre, direccion, ruc,fecha) VALUES ('"+total+"', '"+nomfac+"', '"+direccionfac+"', '"+rucfac+"', '"+fechaa.format(date)+"');");
-    			
-    			ps.executeUpdate();
-               
-//                int to[] = new int[100];
-//                float prec[] = new float[100];
-                Object ex = null,precio=null;
-                Object pros=null;
-                
-                // se crea la sentecia sql y se ejecuta para hacer la modificacion
-               
-//////                FileOutputStream os = null;
-//////                try {
-//////                    os = new FileOutputStream("ticket.txt");
-//////                } catch (FileNotFoundException ex1) {
-//////                    Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex1);
-//////                }
-//////                  PrintStream ps = new PrintStream(os);
-                
-                
-                Ventas row = new Ventas();
-                //int rowCount = row.getFactura();
-               // System.out.println(rowCount);
-               // vendedor vende = new vendedor();
-                int rc = 0;//vende.getFactura();
-                
-                Date fecha = new Date();
-               cadena="Farmacia 'FARMA VEA'\n----------------------\n RUC: TOSO850220GN9 \nBaltazar N. 4  \nSan Antonio Coaxomulco, Tlaxcala\nFecha: "+fecha+"\n";
-                String cade="----------------------\n\n\t>>Datos del Comprador<<\n\nNumero de Factura: "+txtNumFac.getText()+"\nNombre: "+nomfac+"\nRFC: "+rucfac+"\nDireccion: "+direccionfac;
-              //  System.out.println("Numero de Filas: "+rowCount);
-                String enca="\n----------------------\nProducto\tCant.\tPrecio\n";
-                for(int x=0;x<Tproductos.getRowCount();x++){
-                
-                   producto = Tproductos.getValueAt(x,0);
-                    pro = objectToString(producto);
-                    
-                    precio = Tproductos.getValueAt(x,1);
-        //            String pre = objectToString(prec);
-                   
-                    canti = Tproductos.getValueAt(x,2);
-        //            String c = objectToString(canti);
-                   
-                    
-                    if(pro.length()<=8)
-                        pro=pro+"     ";
-                    if(pro.length()>15)
-                        pro = pro.substring(0, 15);
-                                
-                    cadenita = cadenita+"\n"+pro+"\t"+canti+"\t"+precio+"";
-                   
-                }
-                for(int x=0;x<rc;x++){
-                
-                   producto = Tproductos.getValueAt(x,0);
-                    pro = objectToString(producto);
-                    
-                    precio = Tproductos.getValueAt(x,1);
-        //            String pre = objectToString(prec);
-                   
-                    canti = Tproductos.getValueAt(x,2);
-        //            String c = objectToString(canti);
-                   
-                    
-                    if(pro.length()<=8)
-                        pro=pro+"     ";
-                    if(pro.length()>15)
-                        pro = pro.substring(0, 15);
-                                
-                    cadenita = cadenita+"\n"+pro+"\t"+canti+"\t"+precio+"";
-                   
-                }
-                 ticket = cadena+cade+enca+cadenita+"\n\nTotal: \t\t$"+txtTotal.getText()+"\n\n----------------------\n    CON EL CORAZON EN LAS MANOS\n    GRACIAS POR SU COMPRA.\n\n\n\n";
-               //Cogemos el servicio de impresión por defecto (impresora por defecto)
-PrintService service = PrintServiceLookup.lookupDefaultPrintService();
-//Le decimos el tipo de datos que vamos a enviar a la impresora
-//Tipo: bytes Subtipo: autodetectado
-DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-//Creamos un trabajo de impresión
-DocPrintJob pj = service.createPrintJob();
- ss=new String(ticket);
-byte[] bytes;
-bytes=ss.getBytes();
-Doc doc=new SimpleDoc(bytes,flavor,null);
-  pj.print(doc, null);
-                
-                
-               String t=txtTotal.getText();
-               ticket = "";
-                JOptionPane.showMessageDialog(null, "   Imprimiendo Factura");
-               Factura.this.dispose();
-            }   catch (PrintException ex1) {
-                    Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex1);
-                }  catch (SQLException ex) {
-                Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-    
-    
-}
-}
-else 
-    JOptionPane.showMessageDialog(rootPane, "Faltan Campos por Llenar");
-	}
-	*/
 	private void agregarTextoNormal(Document document, String string, Font font, int align) {
         try {
             Chunk espacio = new Chunk(string);

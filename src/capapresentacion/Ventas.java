@@ -32,6 +32,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
@@ -92,7 +93,7 @@ public class Ventas extends JFrame{
 		frmVentas.setBackground(new Color(0, 191, 255));
 		
 		frmVentas.getContentPane().setBackground(new Color(0, 191, 255));
-		//frmVentas.getContentPane().setBackground(Color.#00C0EF);
+		
 		frmVentas.setTitle("Realizar Venta");
 		Image imgSalidas = new ImageIcon(this.getClass().getResource("/pills-16.png")).getImage();
 		frmVentas.setIconImage(imgSalidas);
@@ -354,10 +355,7 @@ public class Ventas extends JFrame{
 		btnFactura.addActionListener(new ActionListener() {
 			
 
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
+			public void actionPerformed(ActionEvent arg0) {	
 		    ////////////////////////////////////////////////////////
 
 			    
@@ -420,6 +418,7 @@ public class Ventas extends JFrame{
 		label.setForeground(new Color(0, 51, 0));
 		label.setFont(new Font("Tahoma", Font.BOLD, 45));
 		frmVentas.getContentPane().add(label);
+		
 		
 		
 		Tlista.getColumn("A").setHeaderValue("Nombre_Producto");
@@ -498,4 +497,5 @@ public class Ventas extends JFrame{
 		// TODO Auto-generated method stub
 		return rowCount;
 	}
+	
 }
