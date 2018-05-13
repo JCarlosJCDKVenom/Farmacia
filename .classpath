@@ -7,8 +7,8 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="img"/>
-	<classpathentry kind="lib" path="C:/Users/USER/Desktop/proyecto/itextpdf-5.3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/USER/Desktop/proyecto/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/USER/Desktop/proyecto/mysql-connector-java-5.1.16-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PC/peruSoftware/Farmacia/jar/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PC/peruSoftware/Farmacia/jar/mysql-connector-java-5.1.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PC/peruSoftware/Farmacia/jar/itext-5.0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
