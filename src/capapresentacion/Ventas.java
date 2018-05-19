@@ -8,6 +8,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+
 import capanegocios.Item;
 import capanegocios.Mercancia;
 import capaaccesodatos.CrudItem;
@@ -39,7 +42,7 @@ import javax.swing.JPanel;
 
 public class Ventas extends JFrame{
 	
-    int rowCount, numfac;
+    int rowCount;
     ConectarDB con = null,query;
 	private JFrame frmVentas;
 	private JTextField txtNombreProducto;
@@ -268,7 +271,7 @@ public class Ventas extends JFrame{
 		
 		btnSalen.setSelectedIcon(new ImageIcon(img2Salen));
 	    btnSalen.setToolTipText("Añadir a la lista de Ventas");
-        numfac=1;
+        
         btnSalen.addMouseListener(new MouseAdapter() {
         	// agregamos el evento MouseEntered
         	// cuando el puntero pase por encima del boton
@@ -299,20 +302,19 @@ public class Ventas extends JFrame{
 					im.setDisponible(nuevoDisp);
 					boolean bol = CI.editDisponible(im);
 					if (bol) {
-						numfac++;
 						lblNuevoDisp.setText(String.valueOf(im.getDisponible()));
 						lblExito.setText("Salida y/o Venta Exitosa!!");
 						cargarLista(valorTexto);
 					}
 					String nomb = "";
-					float cant = 0;
-					float precioUnitario = 0;
-					float precioVenta = 0;
+					Double cant = 0.0;
+					Double precioUnitario = 0.0;
+					Double precioVenta = 0.0;
 					
 					
 					nomb=txtNombreProducto.getText();
-					cant=Float.parseFloat(txtCantidad.getText());
-					precioUnitario = Float.parseFloat(txtPrecioUnitario.getText());///Corregir por el precio unitario   Float.parseFloat(txtPrecioUnitario.getText())*Float.parseFloat(txtCantidad.getText())
+					cant=Double.parseDouble(txtCantidad.getText());
+					precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());///Corregir por el precio unitario   Float.parseFloat(txtPrecioUnitario.getText())*Float.parseFloat(txtCantidad.getText())
 					precioVenta=precioUnitario*cant;
 					
 					CargarDatos(nomb,cant,precioUnitario,precioVenta);
@@ -371,8 +373,6 @@ public class Ventas extends JFrame{
 			            try {
 			            	
 			                Factura Fac = new Factura();
-			                rowCount = Tlista.getRowCount();
-			                numfac=1;
 			                
 			                //int aux = Tlista.
 			                JTable t;
@@ -391,7 +391,7 @@ public class Ventas extends JFrame{
 			                Fac.setTabla(t);
 			                Fac.setTotal(txtTotal.getText());
 			                Fac.setVisible(true);
-			                eliminar();
+			                limpiar();
 			            } catch (Exception ex) {
 			                Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
 			            }
@@ -410,6 +410,24 @@ public class Ventas extends JFrame{
 		label.setForeground(new Color(0, 51, 0));
 		label.setFont(new Font("Tahoma", Font.BOLD, 45));
 		frmVentas.getContentPane().add(label);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				limpiar();
+			}
+		});
+		btnLimpiar.setBounds(40, 659, 89, 23);
+		frmVentas.getContentPane().add(btnLimpiar);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminar(Tlista);
+			}
+		});
+		btnEliminar.setBounds(133, 659, 89, 23);
+		frmVentas.getContentPane().add(btnEliminar);
 		
 		
 		
@@ -460,21 +478,27 @@ public class Ventas extends JFrame{
 
 	}
 	float total=0;
-	public void CargarDatos(String nombre , float cantidad, float precioU, float precioV) {
+	public void CargarDatos(String nombre , Double cantidad, Double precioU, Double precioV) {
 		DefaultTableModel modelo = (DefaultTableModel)Tlista.getModel();
 		modelo.addRow(new Object[] {nombre,cantidad,precioU,precioV});
 		
-		float Vtotal=Float.parseFloat(txtPrecioUnitario.getText())*Float.parseFloat(txtCantidad.getText());
+		Double Vtotal=Double.parseDouble(txtPrecioUnitario.getText())*Double.parseDouble(txtCantidad.getText());
 		
-        total=total+Vtotal;
-        
-        String aux3 = String.valueOf(total);
-        txtTotal.setText(aux3);
+        CargarTotal();
+	}
+	public void CargarTotal() {
+		 int num = Tlista.getRowCount();
+		 TableModel tableModel = Tlista.getModel();
+			Double aux=0.0;
+			for (int i = 0; i < num; i++) {
+				aux = aux + (Double) tableModel.getValueAt(i,3);
+			} 
+			txtTotal.setText(String.valueOf(aux));
 	}
 	public JTable getTabla(){
 	    return this.Tlista;
 	}
-	 public void eliminar(){
+	 public void limpiar(){
 		 txtTotal.setText("0");
 		 total = 0;
 	        DefaultTableModel tb = (DefaultTableModel)Tlista.getModel();
@@ -484,10 +508,22 @@ public class Ventas extends JFrame{
 	        } 
 	        //cargaTicket();
 	    }
-
+	 public void eliminar(JTable tblDetalle) {
+		 	txtTotal.setText("0");
+	        DefaultTableModel modelo = (DefaultTableModel) tblDetalle.getModel();
+	        int fila = tblDetalle.getSelectedRows().length;
+        	System.out.println("fila->"+fila+",numaRows->");
+	        if (fila > 0) {
+	        	for(int i=0; i<fila; i++ ) { 
+	        	modelo.removeRow(tblDetalle.getSelectedRow()); 
+	        	CargarTotal();
+	        	}
+	        } else {
+	            JOptionPane.showMessageDialog(null, "No Selecciono Ninguna Fila", "Aviso", JOptionPane.ERROR_MESSAGE);
+	        }
+	    }
 	public int getFactura() {
 		// TODO Auto-generated method stub
 		return rowCount;
 	}
-	
 }
