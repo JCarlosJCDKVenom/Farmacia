@@ -761,7 +761,7 @@ public class Factura extends JFrame {
 	        agregarEtiqueta(table, txtOrden.getText(), Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, "R.U.C.:", Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, txtIdentidad.getText(), Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, "Nro GUIA", Element.ALIGN_LEFT, false, 1);
+	        agregarEtiqueta(table, "Nro NUMEROBOLETA", Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, txtNumFac.getText(), Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, "FECHA :", Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, txtFecha.getText(), Element.ALIGN_LEFT, false, 1);
@@ -816,20 +816,31 @@ public class Factura extends JFrame {
 	            agregarTexto(table, "" +  Tproductos.getValueAt(i, 2), Element.ALIGN_RIGHT, true, 1);
 	            agregarTexto(table, "" +  Tproductos.getValueAt(i, 3), Element.ALIGN_RIGHT, true, 1);
 	           
-	        }
+	        }/*
 	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
 	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
-	        agregarEtiqueta(table, "SUBTOTAL:", Element.ALIGN_RIGHT, true, 1);
-	        agregarTexto(table, "" +txtTotal.getText(), Element.ALIGN_RIGHT, true, 1);
-	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
-	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        /*agregarEtiqueta(table, "SUBTOTAL:", Element.ALIGN_RIGHT, true, 1);
+	        agregarTexto(table, "" +txtTotal.getText(), Element.ALIGN_RIGHT, true, 1);*/
+	        /*agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);/*
 	        agregarEtiqueta(table, "I.G.V.:", Element.ALIGN_RIGHT, true, 1);
-	        agregarTexto(table, "0.18", Element.ALIGN_RIGHT, true, 1);
+	        agregarTexto(table, "0.18", Element.ALIGN_RIGHT, true, 1);*/
 	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
 	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
 	        agregarEtiqueta(table, "TOTAL", Element.ALIGN_RIGHT, true, 1);
-	        agregarTexto(table, "" + Math.round(Double.parseDouble(txtTotal.getText()) * 1.18 * 100) / 100.0d, Element.ALIGN_RIGHT, true, 1);
-	        
+	        agregarTexto(table, "" + Math.round(Double.parseDouble(txtTotal.getText()) * 100) / 100.0d, Element.ALIGN_RIGHT, true, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "PAGO:", Element.ALIGN_RIGHT, true, 1);
+	        agregarTexto(table, "" +txtPagoInicial.getText(), Element.ALIGN_RIGHT, true, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "", Element.ALIGN_RIGHT, false, 1);
+	        agregarEtiqueta(table, "VUELTO:", Element.ALIGN_RIGHT, true, 1);
+	        agregarTexto(table, "" +txtVuelto.getText(), Element.ALIGN_RIGHT, true, 1);
 	        return table;
 	    }
 	    private void agregarSeparacion(Document document) {
