@@ -506,7 +506,7 @@ public class Factura extends JFrame {
 				try {
 				 rpt = Double.parseDouble(txtPagoInicial.getText())-Double.parseDouble(txtTotal.getText());
 				txtVuelto.setText(String.valueOf(rpt));
-				if(rpt>0) {
+				if(rpt>=0) {
 					txtVuelto.setForeground(Color.green);
 					btnImprimir.setEnabled(true);
 				}else {
@@ -524,6 +524,13 @@ public class Factura extends JFrame {
 			         e.consume();  // ignore event
 			      }
 				
+			}
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(txtPagoInicial.getText()==""||txtPagoInicial.getText()==null){
+					txtVuelto.setForeground(Color.red);
+					btnImprimir.setEnabled(false);
+				}
 			}
 		});
 		txtPagoInicial.setBounds(838, 639, 215, 29);

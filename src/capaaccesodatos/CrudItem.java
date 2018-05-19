@@ -42,7 +42,7 @@ public class CrudItem {
 		try {
 			List<Item> listItems = new ArrayList<>();
 			PreparedStatement ps = ConectarDB.getConnection().prepareStatement(
-			"SELECT * FROM mercancia WHERE nombre LIKE '"+valor+"%'  AND disponible > 0 ORDER BY vencimiento ASC");
+			"SELECT * FROM mercancia WHERE nombre LIKE '"+valor+"%'  AND disponible > 0 order by `mercancia`.`id` ASC");
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -67,7 +67,7 @@ public class CrudItem {
 		try {
 			List<Item> listItems = new ArrayList<>();
 			PreparedStatement ps = ConectarDB.getConnection().prepareStatement(
-			"SELECT * FROM item WHERE disponible > 0 ORDER BY vencimiento ASC");
+			"SELECT * FROM item WHERE disponible > 0 order by `mercancia`.`id` ASC");
 			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
@@ -91,7 +91,7 @@ public class CrudItem {
 	public boolean create(Mercancia itmercancia1){
 		try {
 			PreparedStatement ps = ConectarDB.getConnection().prepareStatement(
-"insert into mercancia (nombre, presentacion, proveedor, cantidad, disponible, costo, precio, lote, vencimiento) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+"insert into mercancia (nombre, presentacion, proveedor, cantidad, disponible, costo, precio, lote, vencimiento) values (?, ?, ?, ?, ?, ?, ?, ?, ?) order by `mercancia`.`id` ASC");
 			ps.setString(1, itmercancia1.getNombre());
 			ps.setString(2, itmercancia1.getPresentacion());
 			ps.setString(3, itmercancia1.getProveedor());
@@ -115,9 +115,10 @@ public class CrudItem {
 	public boolean editDisponible(Mercancia im){
 		try {
 			PreparedStatement ps = ConectarDB.getConnection().prepareStatement(
-			"update mercancia set disponible=? where id=?");
-			ps.setInt (1, im.getDisponible());
+			"update mercancia set disponible=? where id=? order by `mercancia`.`id` ASC");
 			ps.setInt (2, im.getId());
+			ps.setInt (1, im.getDisponible());
+			
 			
 			if(ps.executeUpdate() > 0) {
 				ps.close();
@@ -131,7 +132,7 @@ public class CrudItem {
 	public Mercancia findItem(int id){
 		try {
 			Mercancia p = new Mercancia();
-			PreparedStatement ps = ConectarDB.getConnection().prepareStatement("select * from mercancia where id=?");
+			PreparedStatement ps = ConectarDB.getConnection().prepareStatement("select * from mercancia where id=? order by `mercancia`.`id` ASC");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {				
