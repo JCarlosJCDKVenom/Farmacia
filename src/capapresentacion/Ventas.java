@@ -373,14 +373,6 @@ public class Ventas extends JFrame{
 			                Factura Fac = new Factura();
 			                rowCount = Tlista.getRowCount();
 			                numfac=1;
-			                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("select * from detallefactura");
-			            	ResultSet rs = ps.executeQuery();
-			                while (rs.next()){
-			                
-			                    numfac++;
-			                
-			                }
-			                Fac.setNum(numfac);
 			                
 			                //int aux = Tlista.
 			                JTable t;

@@ -3,7 +3,7 @@ Farmacia 'FARMA VEA'
  RUC: TOSO850220GN9 
 Baltazar N. 4  
 San Antonio Coaxomulco, Tlaxcala
-Fecha: Sat May 12 16:17:44 CDT 2018
+Fecha: Sat May 19 00:27:26 CDT 2018
 ----------------------
 
 	>>Datos del Comprador<<
@@ -15,9 +15,9 @@ Direccion:
 ----------------------
 Producto	     Cant.	     Precio
 
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  23.0 $
+CETIRIZINA 10mg Tableta Caja Tab. x 100 unid. NAT. Y GEN. - NG4577	  2.3	  -5.0 $
 
-Total: 		$1265.0
+Total: 		$-11.5
 
 ----------------------
   PERU SOFTWARE A SU SERVICIO

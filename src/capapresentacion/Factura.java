@@ -86,9 +86,12 @@ import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import java.awt.event.KeyAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Factura extends JFrame {
-	
+	String FormaPago = "CONTADO";
 	private Font fuenteTitulo = new Font("Agency FB", Font.BOLD, 18);
 	private JPanel contentPane;
 	private JTextField txtNumFac;
@@ -106,6 +109,9 @@ public class Factura extends JFrame {
 	private String ticket;
 	java.util.Date fecha = new Date();
 	List<Factura> productos = new ArrayList<Factura>();
+	private JTextField txtPagoInicial;
+	private JTextField txtVuelto;
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -125,8 +131,10 @@ public class Factura extends JFrame {
 	 * Create the frame.
 	 */
 	public Factura() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1080, 720);
+		setBounds(0, 0, 1080, 760);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setUndecorated(true);
@@ -163,7 +171,7 @@ public class Factura extends JFrame {
 		panel_1.setForeground(new Color(230, 230, 250));
 		panel_1.setBackground(new Color(230, 230, 250));
 		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128)));
-		panel_1.setBounds(630, 24, 414, 70);
+		panel_1.setBounds(630, 24, 423, 70);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -300,7 +308,25 @@ public class Factura extends JFrame {
 		txtCodigo.setColumns(10);
 		txtCodigo.setBounds(482, 121, 150, 20);
 		panel_2.add(txtCodigo);
-		
+		try {
+			PreparedStatement ps;
+			ps = ConectarDB.getConnection().prepareStatement("SELECT COUNT(*) FROM facturas;");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				String res = rs.toString();
+				res = rs.getString(1);
+				
+				System.out.println(res);
+				int num = Integer.parseInt(res)+1;
+				String res2 = String.valueOf(num);
+						setNum(res2);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String labels[] = { "Persona Natural", "Persona Juridica" };
 	    final DefaultComboBoxModel model = new DefaultComboBoxModel(labels);
 
@@ -334,6 +360,36 @@ public class Factura extends JFrame {
 		box.setBounds(482, 20, 150, 20);
 		panel_2.add(box);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"CONTADO", "TARJETA"}));
+		comboBox.setToolTipText("");
+		comboBox.setBounds(645, 20, 150, 20);
+		panel_2.add(comboBox);
+		
+		comboBox.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String box1=(String)comboBox.getSelectedItem();
+						 
+		
+				        box1=(String)comboBox.getSelectedItem();
+				        if (box1=="CONTADO") {
+				            FormaPago="CONTADO";
+				            
+				            
+				            
+				        }else if(box1=="TARJETA")
+				        {
+				        	FormaPago="TARJETA";
+				           
+				            
+				            
+				        }    
+						    
+						
+					}
+				});
 		
 		
 		
@@ -341,7 +397,7 @@ public class Factura extends JFrame {
 		
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(27, 333, 1027, 306);
+		panel_3.setBounds(27, 333, 1027, 261);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -349,7 +405,7 @@ public class Factura extends JFrame {
 		Tproductos  = new JTable (0,4);
 		Tproductos.setEnabled(false);
 		JScrollPane sc = new JScrollPane(Tproductos);
-		sc.setBounds(0, 0, 1027, 306);
+		sc.setBounds(0, 0, 1027, 260);
 		 sc.setPreferredSize(new Dimension(400,150));
 		panel_3.add(sc);
 
@@ -361,54 +417,44 @@ public class Factura extends JFrame {
 
 		
 		txtTotal = new JTextField();
+		txtTotal.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+			      if ( ((c < '0') || (c >= '0')) || (c != KeyEvent.VK_BACK_SPACE) || (c!= KeyEvent.VK_DELETE)) {
+			         e.consume();  // ignore event
+			      }
+			}
+		});
+		txtTotal.setFont(new Font("Tahoma", Font.BOLD, 15));
 		txtTotal.setText("0.00");
-		txtTotal.setBounds(667, 659, 215, 29);
+		txtTotal.setBounds(838, 605, 215, 29);
 		contentPane.add(txtTotal);
 		txtTotal.setColumns(10);
 		txtTotal.setHorizontalAlignment(SwingConstants.RIGHT); 
 		
 			
 		JButton btnImprimir = new JButton("IMPRIMIR");
+		btnImprimir.setEnabled(false);
 		btnImprimir.addActionListener(new ActionListener() {
 			
 
 			public void actionPerformed(ActionEvent arg0) {
+				
 				devolver2();
 				
 				
 			}
 		});
-		btnImprimir.setBounds(918, 662, 89, 23);
+		btnImprimir.setBounds(961, 714, 89, 23);
 		contentPane.add(btnImprimir);
 		
 		JButton btnGuardar = new JButton("BGuardar");
 		btnGuardar.setBounds(40, 647, 89, 23);
-		btnGuardar = new JButton();
-		btnGuardar.setSize(new Dimension(114, 54));
-		btnGuardar.setIcon(new ImageIcon("IMAGENES/GUARDARIMP.JPG"));
-		btnGuardar.setToolTipText("Guardar e Imprimir");
-		btnGuardar.setEnabled(false);
-		btnGuardar.setDisabledIcon(new ImageIcon("IMAGENES/GUARDARIMP2.JPG"));
-		btnGuardar.setLocation(new Point(310, 34));
-		btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent e) {/*
-				if (TxtCliente.getText().length()==0)
-				{JOptionPane.showMessageDialog(null,"¡Ingrese el Cliente al que se realiza la venta!","Datos incompletos",2);
-				 BClientes.requestFocus();}
-				else if (CboVendedor.getSelectedIndex()==-1)
-				{JOptionPane.showMessageDialog(null,"¡Ingrese el Vendedor que realiza la venta!","Datos incompletos",2);
-				 CboVendedor.requestFocus();}
-				else if (modelo.getRowCount()==0)
-				{JOptionPane.showMessageDialog(null,"¡No ha ingresado ArtÃ­culos en esta venta!","Datos incompletos",2);
-				 BInsertar.requestFocus();}
-				else{guardar();}*/
-			}
-		});
-		contentPane.add(btnGuardar);
 		JButton bEliminar = new JButton();
 		bEliminar.setToolTipText("Eliminar registro de Cliente");
 		bEliminar.setSize(new Dimension(145, 40));
-		bEliminar.setLocation(new Point(27, 650));
+		bEliminar.setLocation(new Point(27, 697));
 		bEliminar.setFont(new Font("Dialog", Font.BOLD, 14));
 		bEliminar.setText("Cancelar");
 		bEliminar.setMnemonic(KeyEvent.VK_E);
@@ -431,17 +477,85 @@ public class Factura extends JFrame {
 		btnLimpiar = new JButton();
 		btnLimpiar.setToolTipText("Cancelar informaciï¿½n");
 		btnLimpiar.setSize(new Dimension(112, 41));
-		btnLimpiar.setLocation(new Point(182, 650));
+		btnLimpiar.setLocation(new Point(175, 697));
 		btnLimpiar.setEnabled(false);
 		btnLimpiar.setText("Cancelar");
 		btnLimpiar.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnLimpiar.setMnemonic(KeyEvent.VK_C);
 		btnLimpiar.setIcon(new ImageIcon("img/imgCancelar.JPG"));
 		contentPane.add(btnLimpiar);
+		
+		JLabel lblPagini = new JLabel("PAG_INI");
+		lblPagini.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblPagini.setBounds(775, 639, 63, 29);
+		contentPane.add(lblPagini);
+		
+		txtPagoInicial = new JTextField("0.0");
+		txtPagoInicial.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				txtPagoInicial.selectAll();
+			}
+		});
+		txtPagoInicial.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtPagoInicial.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				Double rpt = 0.0;
+				try {
+				 rpt = Double.parseDouble(txtPagoInicial.getText())-Double.parseDouble(txtTotal.getText());
+				txtVuelto.setText(String.valueOf(rpt));
+				if(rpt>0) {
+					txtVuelto.setForeground(Color.green);
+					btnImprimir.setEnabled(true);
+				}else {
+					txtVuelto.setForeground(Color.red);
+					btnImprimir.setEnabled(false);
+				}
+				}catch(Exception ex) {
+					rpt=0.0;
+				}
+			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				if ( ((c < '0') || (c >= '9')) ) {
+			         e.consume();  // ignore event
+			      }
+				
+			}
+		});
+		txtPagoInicial.setBounds(838, 639, 215, 29);
+		contentPane.add(txtPagoInicial);
+		txtPagoInicial.setColumns(10);
+		txtPagoInicial.setHorizontalAlignment(SwingConstants.RIGHT); 
+		
+		JLabel lblVuelto = new JLabel("VUELTO");
+		lblVuelto.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblVuelto.setBounds(775, 676, 63, 26);
+		contentPane.add(lblVuelto);
+		
+		txtVuelto = new JTextField("0.0");
+		txtVuelto.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+			      if ( ((c < '0') || (c >= '0')) || (c != KeyEvent.VK_BACK_SPACE) || (c!= KeyEvent.VK_DELETE)) {
+			         e.consume();  // ignore event
+			      }
+			}
+		});
+		
+		txtVuelto.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtVuelto.setColumns(10);
+		txtVuelto.setBounds(838, 673, 215, 29);
+		contentPane.add(txtVuelto);
+		txtVuelto.setHorizontalAlignment(SwingConstants.RIGHT); 
 		btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent e) {
 			  try{
-				 int respuesta=JOptionPane.showConfirmDialog(null, "ï¿½Desea descartar los datos ingresados?", "Cancelar ingresos",0, 3);
+				 int respuesta=JOptionPane.showConfirmDialog(null, "ï¿Desea descartar los datos ingresados?", "Cancelar ingresos",0, 3);
 			  	 
 			     }
 			  catch(Exception s){}
@@ -457,9 +571,15 @@ public class Factura extends JFrame {
 		return formatofecha.format(fecha);
 	}
 	
-	public void setNum(int num){
-	    String x = String.valueOf(num);
-	    txtNumFac.setText(x);
+	public void setNum(String num){
+		try {
+		    txtNumFac.setText(num);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	    
+
 	}
 	public JTable getTabla(){
 	    return this.Tproductos;
@@ -484,33 +604,30 @@ public class Factura extends JFrame {
 		int j;
         ConectarDB con;
         ResultSet rs;
+        String PagoInicial = txtPagoInicial.getText();
+        String vuelto = txtVuelto.getText();
+        String ss;
         String nomfac = txtNombre.getText();
         String rucfac = txtIdentidad.getText();
         String direccionfac = txtDireccion.getText();
         String total = txtTotal.getText();
         Date date = new Date();
-       DateFormat fechaa = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
-       System.out.println("fecha"+fechaa.format(date));
+	       DateFormat fechaa = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+	       System.out.println("fecha"+fechaa.format(date));
         Object producto;
         Object canti;
         String cadenita = "";
         String pro ="";
-        
-        
-
-
-    String existe = null;
-    int e;
+	    String existe = null;
+	    int e;
         String ID = null;
-        
-        String ss;
+       
         String cadena;
-        
         try {
                 //se crea la conexion y las consultas
                 con = new ConectarDB();
                 Double cantidad = Double.parseDouble(total);
-                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("INSERT INTO facturas (cantidad, nombre, direccion, ruc,fecha) VALUES ('"+cantidad+"', '"+nomfac+"', '"+direccionfac+"', '"+rucfac+"', '"+fechaa.format(date)+"');");
+                PreparedStatement ps = ConectarDB.getConnection().prepareStatement("INSERT INTO facturas (NUM_FAC, FECHA, ID_CLI, ID_VEN, FOR_PAG, DESCU, PREC_FINAL,TOT_DES, VUELTO, OBSERVAC, PAGO_INI) VALUES ('"+txtNumFac.getText()+"','"+fechaa.format(date)+"','CL0001','VE0001','"+FormaPago+"','0','"+total+"','0.0','"+vuelto+"','ninguno','"+PagoInicial+"');");
     			
     			ps.executeUpdate();
                
@@ -726,6 +843,4 @@ public class Factura extends JFrame {
 	            ex.printStackTrace();
 	        }
 	    }
-
-	 
 }
