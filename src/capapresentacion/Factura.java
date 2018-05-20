@@ -89,7 +89,7 @@ import javax.swing.JComboBox;
 import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import capapresentacion.Ventas;
 public class Factura extends JFrame {
 	String FormaPago = "CONTADO";
 	private Font fuenteTitulo = new Font("Agency FB", Font.BOLD, 18);
@@ -117,6 +117,8 @@ public class Factura extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+					
 					Factura frame = new Factura();
 					frame.setVisible(true);
 					
@@ -131,7 +133,8 @@ public class Factura extends JFrame {
 	 * Create the frame.
 	 */
 	public Factura() {
-		
+		Ventas limpiar = new Ventas();
+		limpiar.limpiar(limpiar.Tlista);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1080, 760);
@@ -139,6 +142,7 @@ public class Factura extends JFrame {
 		this.setResizable(false);
 		this.setUndecorated(true);
 		contentPane = new JPanel();
+		
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -148,7 +152,9 @@ public class Factura extends JFrame {
 		contentPane.setLayout(null);
 		
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+		
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128), new Color(0, 128, 128)));
 		panel.setForeground(new Color(230, 230, 250));
@@ -205,7 +211,7 @@ public class Factura extends JFrame {
 		lblNroDeOrden.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNroDeOrden.setBounds(26, 21, 100, 14);
 		panel_2.add(lblNroDeOrden);
-		
+		lblNroDeOrden.setVisible(false);
 		JLabel lblNewLabel = new JLabel("Nombre Cliente");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel.setBounds(26, 46, 100, 14);
@@ -225,6 +231,7 @@ public class Factura extends JFrame {
 		lblEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblEmpleado.setBounds(26, 122, 100, 14);
 		panel_2.add(lblEmpleado);
+		lblEmpleado.setVisible(false);
 		
 		txtOrden = new JTextField();
 		txtOrden.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -233,7 +240,7 @@ public class Factura extends JFrame {
 		txtOrden.setBounds(123, 20, 241, 20);
 		panel_2.add(txtOrden);
 		txtOrden.setColumns(10);
-		
+		txtOrden.setVisible(false);
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtNombre.setBackground(new Color(224, 255, 255));
@@ -265,11 +272,11 @@ public class Factura extends JFrame {
 		txtEmpleado.setColumns(10);
 		txtEmpleado.setBounds(123, 121, 241, 20);
 		panel_2.add(txtEmpleado);
-		
+		txtEmpleado.setVisible(false);
 		JButton btnBuscar = new JButton("BUSCAR");
 		btnBuscar.setBounds(383, 19, 89, 23);
 		panel_2.add(btnBuscar);
-		
+		btnBuscar.setVisible(false);
 		JLabel lblApellido = new JLabel("APELLIDOS");
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblApellido.setBounds(393, 48, 79, 14);
@@ -284,6 +291,7 @@ public class Factura extends JFrame {
 		lblCodigo_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCodigo_1.setBounds(393, 124, 79, 14);
 		panel_2.add(lblCodigo_1);
+		lblCodigo_1.setVisible(false);
 		
 		txtApellido = new JTextField();
 		txtApellido.setBackground(new Color(224, 255, 255));
@@ -308,6 +316,7 @@ public class Factura extends JFrame {
 		txtCodigo.setColumns(10);
 		txtCodigo.setBounds(482, 121, 150, 20);
 		panel_2.add(txtCodigo);
+		txtCodigo.setVisible(false);
 		try {
 			PreparedStatement ps;
 			ps = ConectarDB.getConnection().prepareStatement("SELECT COUNT(*) FROM facturas;");
@@ -413,7 +422,8 @@ public class Factura extends JFrame {
 		Tproductos.getColumn("B").setHeaderValue("Cantidad");
 		Tproductos.getColumn("C").setHeaderValue("Precio_Unidad");
 		Tproductos.getColumn("D").setHeaderValue("PrecioVenta");
-		
+		Ventas cargar = new Ventas();
+		cargar.CargarTablaAncho(Tproductos, 700, 100, 100, 100);
 
 		
 		txtTotal = new JTextField();
@@ -764,12 +774,11 @@ public class Factura extends JFrame {
 	        agregarEtiqueta(table, txtApellido.getText(), Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, "DIRECCION:", Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, txtDireccion.getText(), Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, "ORDEN DE COMPRA:", Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, txtOrden.getText(), Element.ALIGN_LEFT, false, 1);
+	        
 	        agregarEtiqueta(table, "R.U.C.:", Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, txtIdentidad.getText(), Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, "Nro NUMEROBOLETA", Element.ALIGN_LEFT, false, 1);
-	        agregarEtiqueta(table, txtNumFac.getText(), Element.ALIGN_LEFT, false, 1);
+	        agregarEtiqueta(table, "PersonalizadoAgregar", Element.ALIGN_LEFT, false, 1);
+	        agregarEtiqueta(table, "Nro BOLETA", Element.ALIGN_LEFT, false, 1);
+	        agregarEtiqueta(table, "00000"+txtNumFac.getText(), Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, "FECHA :", Element.ALIGN_LEFT, false, 1);
 	        agregarEtiqueta(table, txtFecha.getText(), Element.ALIGN_LEFT, false, 1);
 	        return table;

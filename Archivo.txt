@@ -3,45 +3,24 @@ Farmacia 'FARMA VEA'
  RUC: TOSO850220GN9 
 Baltazar N. 4  
 San Antonio Coaxomulco, Tlaxcala
-Fecha: Sat May 19 11:31:16 CDT 2018
+Fecha: Sun May 20 15:34:36 CDT 2018
 ----------------------
 
 	>>Datos del Comprador<<
 
-Numero de Factura: 14
-Nombre: 
-RUC: 
-Direccion: 
+Numero de Factura: 17
+Nombre: Juan Carlos
+RUC: 71887663
+Direccion: jr 28 de julio 215
 ----------------------
 Producto	     Cant.	     Precio
 
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  2.0 $
+AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
+AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
+AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
+AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
 
-Total: 		$2750.0
+Total: 		$220.0
 
 ----------------------
   PERU SOFTWARE A SU SERVICIO

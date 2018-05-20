@@ -53,7 +53,7 @@ public class Ventas extends JFrame{
 	private JTextField txtPrecioUnitario;
 	String valorTexto;
 	private JTextField txtTotal;
-	private JTable Tlista;
+	public JTable Tlista;
 	int j=0;
 	
 	// private JScrollPane scrollPane_1;
@@ -377,6 +377,7 @@ public class Ventas extends JFrame{
 			                //int aux = Tlista.
 			                JTable t;
 			                t=Fac.getTabla();
+			                rowCount = Tlista.getRowCount();
 			                for(int k=0;k<rowCount;k++)
 			                {
 			                	DefaultTableModel modelo = (DefaultTableModel)t.getModel();
@@ -386,12 +387,14 @@ public class Ventas extends JFrame{
 			                    t.setValueAt(Tlista.getValueAt(k, 1), k, 1);
 			                    t.setValueAt(Tlista.getValueAt(k, 2), k, 2);
 			                    t.setValueAt(Tlista.getValueAt(k, 3), k, 3);
+			                   
 			                    
 			                }
 			                Fac.setTabla(t);
+			                
 			                Fac.setTotal(txtTotal.getText());
 			                Fac.setVisible(true);
-			                limpiar();
+			                limpiar(Tlista);
 			            } catch (Exception ex) {
 			                Logger.getLogger(Ventas.class.getName()).log(Level.SEVERE, null, ex);
 			            }
@@ -412,12 +415,13 @@ public class Ventas extends JFrame{
 		frmVentas.getContentPane().add(label);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setBorder(new RoundedBorder(40));
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				limpiar();
+				limpiar(Tlista);
 			}
 		});
-		btnLimpiar.setBounds(40, 659, 89, 23);
+		btnLimpiar.setBounds(40, 654, 115, 28);
 		frmVentas.getContentPane().add(btnLimpiar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
@@ -426,7 +430,7 @@ public class Ventas extends JFrame{
 				eliminar(Tlista);
 			}
 		});
-		btnEliminar.setBounds(133, 659, 89, 23);
+		btnEliminar.setBounds(170, 659, 89, 23);
 		frmVentas.getContentPane().add(btnEliminar);
 		
 		
@@ -470,12 +474,17 @@ public class Ventas extends JFrame{
 		
 		Tlista.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		//Tlista.getColumnModel().getColumn(0).setPreferredWidth(-1);
-		Tlista.getColumnModel().getColumn(0).setPreferredWidth(939);
-		Tlista.getColumnModel().getColumn(1).setPreferredWidth(71);
-		Tlista.getColumnModel().getColumn(2).setPreferredWidth(90);
-		Tlista.getColumnModel().getColumn(3).setPreferredWidth(90);
+		CargarTablaAncho(Tlista, 949, 71,90,90);
 		//Tlista.getColumnModel().getColumn(3).setPreferredWidth(50);
 
+	}
+	public void CargarTablaAncho(JTable tabla, int ancho1, int ancho2, int ancho3, int ancho4) {
+		for (int i = 0; i < tabla.getColumnCount(); i++) {
+			tabla.getColumnModel().getColumn(0).setPreferredWidth(ancho1);
+			tabla.getColumnModel().getColumn(1).setPreferredWidth(ancho2);
+			tabla.getColumnModel().getColumn(2).setPreferredWidth(ancho3);
+			tabla.getColumnModel().getColumn(3).setPreferredWidth(ancho4);
+		}
 	}
 	float total=0;
 	public void CargarDatos(String nombre , Double cantidad, Double precioU, Double precioV) {
@@ -498,15 +507,17 @@ public class Ventas extends JFrame{
 	public JTable getTabla(){
 	    return this.Tlista;
 	}
-	 public void limpiar(){
+	 public JTable limpiar(JTable tab){
 		 txtTotal.setText("0");
 		 total = 0;
-	        DefaultTableModel tb = (DefaultTableModel)Tlista.getModel();
-	        int a = Tlista.getRowCount()-1;
-	        for (int i = a; i >= 0; i--) {           
+	        DefaultTableModel tb = (DefaultTableModel)tab.getModel();
+	        int rowCount = Tlista.getRowCount()-1;
+	        System.out.println(rowCount);
+	        for (int i = rowCount; i >= 0; i--) {           
 	        tb.removeRow(tb.getRowCount()-1);
 	        } 
 	        //cargaTicket();
+	        return tab;
 	    }
 	 public void eliminar(JTable tblDetalle) {
 		 	txtTotal.setText("0");
