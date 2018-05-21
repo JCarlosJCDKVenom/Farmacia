@@ -58,7 +58,7 @@ public class Principal {
 		frmFarmaciaInnova = new JFrame();
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		frmFarmaciaInnova.setFont(new Font("Dialog", Font.BOLD, 14));
-		frmFarmaciaInnova.setForeground(Color.BLACK);
+		frmFarmaciaInnova.setForeground(new Color(0, 191, 255));
 		frmFarmaciaInnova.setTitle("Farmacia Innova");
 		Image imgPrincipal = new ImageIcon(this.getClass().getResource("/main_icon.png")).getImage();
 		frmFarmaciaInnova.setIconImage(imgPrincipal);

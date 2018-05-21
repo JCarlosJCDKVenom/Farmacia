@@ -415,7 +415,6 @@ public class Ventas extends JFrame{
 		frmVentas.getContentPane().add(label);
 		
 		JButton btnLimpiar = new JButton("Limpiar");
-		btnLimpiar.setBorder(new RoundedBorder(40));
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				limpiar(Tlista);
@@ -440,9 +439,6 @@ public class Ventas extends JFrame{
 		Tlista.getColumn("C").setHeaderValue("Precio_Unidad");
 		Tlista.getColumn("D").setHeaderValue("PrecioVenta");
 		
-
-		
-
 	}
 	
 

@@ -3,24 +3,21 @@ Farmacia 'FARMA VEA'
  RUC: TOSO850220GN9 
 Baltazar N. 4  
 San Antonio Coaxomulco, Tlaxcala
-Fecha: Mon May 21 12:13:09 CDT 2018
+Fecha: Mon May 21 15:50:20 CDT 2018
 ----------------------
 
 	>>Datos del Comprador<<
 
-Numero de Factura: 18
+Numero de Factura: 19
 Nombre: Juan Carlos
 RUC: 71887663
-Direccion: Jr 28 d julio Nro 215
+Direccion: jr 28 de  Julio Nro 215
 ----------------------
 Producto	     Cant.	     Precio
 
-AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	  20.0	  1.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
-ALGODON COPPON x 100 gr	  5.0	  1.0 $
-ALGODON COPPON x 100 gr	  5.0	  1.0 $
+ANTALGINA 500mg Tableta Caja Tab. x 100 unid. TEVA - N855	  15.0	  234.0 $
 
-Total: 		$85.0
+Total: 		$3510.0
 
 ----------------------
   PERU SOFTWARE A SU SERVICIO

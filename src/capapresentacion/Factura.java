@@ -145,9 +145,9 @@ public class Factura extends JFrame {
 		
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBackground(new Color(0, 191, 255));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new MatteBorder(5, 5, 5, 5, (Color) Color.DARK_GRAY));
 
-		contentPane.setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, new ImageIcon("img/imgCruz.PNG")));
+		//contentPane.setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, new ImageIcon("img/imgCruz.PNG")));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		

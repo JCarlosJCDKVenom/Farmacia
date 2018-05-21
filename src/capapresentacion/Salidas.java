@@ -73,7 +73,7 @@ public class Salidas {
 		}
 		
 		frmSalidaDeProductos = new JFrame();
-		frmSalidaDeProductos.getContentPane().setBackground(Color.BLACK);
+		frmSalidaDeProductos.getContentPane().setBackground(new Color(0, 191, 255));
 		frmSalidaDeProductos.setTitle("Salida de Productos");
 		Image imgSalidas = new ImageIcon(this.getClass().getResource("/pills-16.png")).getImage();
 		frmSalidaDeProductos.setIconImage(imgSalidas);
@@ -104,14 +104,14 @@ public class Salidas {
 		
 		JLabel lblLtValor = new JLabel("...");
 		lblLtValor.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLtValor.setForeground(Color.WHITE);
-		lblLtValor.setBounds(553, 283, 81, 14);
+		lblLtValor.setForeground(new Color(0, 0, 0));
+		lblLtValor.setBounds(553, 283, 198, 14);
 		frmSalidaDeProductos.getContentPane().add(lblLtValor);
 		
 		JLabel lblDisp = new JLabel("...");
 		lblDisp.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblDisp.setForeground(Color.WHITE);
-		lblDisp.setBounds(553, 308, 81, 14);
+		lblDisp.setForeground(new Color(0, 0, 0));
+		lblDisp.setBounds(553, 308, 198, 14);
 		frmSalidaDeProductos.getContentPane().add(lblDisp);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -140,7 +140,7 @@ public class Salidas {
 		
 		JLabel lblSalen = new JLabel("Salen:");
 		lblSalen.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblSalen.setForeground(Color.WHITE);
+		lblSalen.setForeground(new Color(0, 0, 0));
 		lblSalen.setBounds(30, 280, 87, 28);
 		frmSalidaDeProductos.getContentPane().add(lblSalen);
 		
@@ -152,27 +152,27 @@ public class Salidas {
 		
 		JLabel lblLote = new JLabel("Lote:");
 		lblLote.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblLote.setForeground(Color.WHITE);
-		lblLote.setBounds(431, 280, 46, 14);
+		lblLote.setForeground(new Color(0, 0, 0));
+		lblLote.setBounds(431, 280, 115, 14);
 		frmSalidaDeProductos.getContentPane().add(lblLote);
 		
 		JLabel lblNuevoDisp = new JLabel("...");
 		lblNuevoDisp.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNuevoDisp.setForeground(Color.WHITE);
-		lblNuevoDisp.setBounds(553, 356, 46, 14);
+		lblNuevoDisp.setForeground(new Color(0, 0, 0));
+		lblNuevoDisp.setBounds(553, 356, 198, 14);
 		frmSalidaDeProductos.getContentPane().add(lblNuevoDisp);
 		
 		JLabel lblDisponible = new JLabel("Disponible:");
 		lblDisponible.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblDisponible.setForeground(Color.WHITE);
-		lblDisponible.setBounds(431, 308, 95, 14);
+		lblDisponible.setForeground(new Color(0, 0, 0));
+		lblDisponible.setBounds(431, 308, 115, 14);
 		frmSalidaDeProductos.getContentPane().add(lblDisponible);
 		
 		JLabel lblExito = new JLabel("...");
-		lblExito.setForeground(Color.WHITE);
+		lblExito.setForeground(new Color(0, 0, 0));
 		lblExito.setBackground(Color.WHITE);
 		lblExito.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblExito.setBounds(95, 420, 310, 61);
+		lblExito.setBounds(95, 420, 446, 61);
 		frmSalidaDeProductos.getContentPane().add(lblExito);
 		
 		JButton btnSalen = new JButton("Salen");
@@ -200,14 +200,14 @@ public class Salidas {
 		
 		JLabel lblNuevo = new JLabel("Nuevo");
 		lblNuevo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNuevo.setForeground(Color.WHITE);
-		lblNuevo.setBounds(431, 335, 59, 20);
+		lblNuevo.setForeground(new Color(0, 0, 0));
+		lblNuevo.setBounds(431, 335, 115, 20);
 		frmSalidaDeProductos.getContentPane().add(lblNuevo);
 		
 		JLabel lblDisponible_1 = new JLabel("Disponible:");
 		lblDisponible_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblDisponible_1.setForeground(Color.WHITE);
-		lblDisponible_1.setBounds(431, 347, 95, 28);
+		lblDisponible_1.setForeground(new Color(0, 0, 0));
+		lblDisponible_1.setBounds(431, 347, 115, 28);
 		frmSalidaDeProductos.getContentPane().add(lblDisponible_1);
 		
 		txtVenta = new JTextField();
@@ -217,7 +217,7 @@ public class Salidas {
 		txtVenta.setColumns(10);
 		
 		JLabel lblPrecioVenta = new JLabel("Precio Venta:");
-		lblPrecioVenta.setForeground(Color.WHITE);
+		lblPrecioVenta.setForeground(new Color(0, 0, 0));
 		lblPrecioVenta.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblPrecioVenta.setBounds(30, 319, 154, 28);
 		frmSalidaDeProductos.getContentPane().add(lblPrecioVenta);
@@ -262,5 +262,4 @@ public class Salidas {
 		
 		//table.setModel( dlm);
 	}
-
 }

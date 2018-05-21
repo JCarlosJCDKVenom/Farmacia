@@ -98,7 +98,7 @@ public class Entradas {
 		
 		
 		frmIngresoDeMercancias = new JFrame();
-		frmIngresoDeMercancias.getContentPane().setBackground(Color.BLACK);
+		frmIngresoDeMercancias.getContentPane().setBackground(new Color(0, 191, 255));
 		Image imgEntradas = new ImageIcon(this.getClass().getResource("/pills_medium-16.png")).getImage();
 		frmIngresoDeMercancias.setIconImage(imgEntradas);
 		frmIngresoDeMercancias.setTitle("Ingreso de Medicamentos y/o Productos");
@@ -152,6 +152,7 @@ public class Entradas {
 		scrollPane.setViewportView(listMed);
 		
 		listLab = new JList();
+		listLab.setFont(new Font("Tahoma", Font.BOLD, 12));
 		listLab.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -173,13 +174,13 @@ public class Entradas {
 		
 		
 		txtLote = new JTextField();
-		txtLote.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtLote.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtLote.setBounds(364, 238, 126, 20);
 		frmIngresoDeMercancias.getContentPane().add(txtLote);
 		txtLote.setColumns(10);
 		
 		txtCantidad = new JTextField();
-		txtCantidad.setFont(new Font("Tahoma", Font.BOLD, 15));
+		txtCantidad.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtCantidad.setBounds(364, 281, 46, 20);
 		frmIngresoDeMercancias.getContentPane().add(txtCantidad);
 		txtCantidad.setColumns(10);
@@ -189,45 +190,50 @@ public class Entradas {
 		frmIngresoDeMercancias.getContentPane().add(dateChooser);
 		
 		txtCompra = new JTextField();
+		txtCompra.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtCompra.setBounds(705, 308, 86, 20);
 		frmIngresoDeMercancias.getContentPane().add(txtCompra);
 		txtCompra.setColumns(10);
 		
 		txtVenta = new JTextField();
+		txtVenta.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtVenta.setBounds(705, 342, 86, 20);
 		frmIngresoDeMercancias.getContentPane().add(txtVenta);
 		txtVenta.setColumns(10);
 		
 		JLabel lblCantidad = new JLabel("Lote:");
-		lblCantidad.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblCantidad.setForeground(Color.WHITE);
+		lblCantidad.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblCantidad.setForeground(new Color(0, 0, 0));
 		lblCantidad.setBounds(238, 234, 60, 20);
 		frmIngresoDeMercancias.getContentPane().add(lblCantidad);
 		
 		JLabel lblNewLabel = new JLabel("Cantidad:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setBounds(238, 275, 116, 25);
 		frmIngresoDeMercancias.getContentPane().add(lblNewLabel);
 		
 		JLabel lblPc = new JLabel("Precio Compra:");
-		lblPc.setForeground(Color.WHITE);
-		lblPc.setBounds(574, 311, 88, 14);
+		lblPc.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblPc.setForeground(new Color(0, 0, 0));
+		lblPc.setBounds(574, 311, 127, 14);
 		frmIngresoDeMercancias.getContentPane().add(lblPc);
 		
 		JLabel lblPv = new JLabel("Precio Venta:");
-		lblPv.setForeground(Color.WHITE);
-		lblPv.setBounds(574, 345, 66, 14);
+		lblPv.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblPv.setForeground(new Color(0, 0, 0));
+		lblPv.setBounds(574, 345, 127, 14);
 		frmIngresoDeMercancias.getContentPane().add(lblPv);
 		
 		JLabel lblVenci = new JLabel("Vence el:");
-		lblVenci.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblVenci.setForeground(Color.WHITE);
+		lblVenci.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblVenci.setForeground(new Color(0, 0, 0));
 		lblVenci.setBounds(238, 320, 115, 31);
 		frmIngresoDeMercancias.getContentPane().add(lblVenci);
 		
-		JButton btnGuardar = new JButton("   Ingresar");
-		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		JButton btnGuardar = new JButton("Ingresar");
+		btnGuardar.setForeground(new Color(0, 0, 0));
+		btnGuardar.setFont(new Font("Dialog", Font.BOLD, 17));
 		Image imgMain = new ImageIcon(this.getClass().getResource("/Ok-icon.png")).getImage();
 		btnGuardar.setIcon(new ImageIcon(imgMain));
 		
@@ -240,6 +246,7 @@ public class Entradas {
 		frmIngresoDeMercancias.getContentPane().add(btnGuardar);
 		
 		txtProvedor = new JTextField();
+		txtProvedor.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtProvedor.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
@@ -253,12 +260,13 @@ public class Entradas {
 		txtProvedor.setColumns(10);
 		
 		JLabel lblProovedor = new JLabel("Proovedor:");
-		lblProovedor.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblProovedor.setForeground(Color.WHITE);
+		lblProovedor.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblProovedor.setForeground(new Color(0, 0, 0));
 		lblProovedor.setBounds(574, 236, 121, 20);
 		frmIngresoDeMercancias.getContentPane().add(lblProovedor);
 		
 		txtPresentacion = new JTextField();
+		txtPresentacion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		txtPresentacion.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
@@ -267,13 +275,13 @@ public class Entradas {
 				cargarPresentacion(valor);
 			}
 		});
-		txtPresentacion.setBounds(705, 277, 86, 20);
+		txtPresentacion.setBounds(704, 275, 86, 20);
 		frmIngresoDeMercancias.getContentPane().add(txtPresentacion);
 		txtPresentacion.setColumns(10);
 		
 		lblPresentacion = new JLabel("Presentacion");
-		lblPresentacion.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblPresentacion.setForeground(Color.WHITE);
+		lblPresentacion.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblPresentacion.setForeground(new Color(0, 0, 0));
 		lblPresentacion.setBounds(574, 275, 108, 14);
 		frmIngresoDeMercancias.getContentPane().add(lblPresentacion);
 		
@@ -342,10 +350,8 @@ public class Entradas {
 
 		itmercancia1.setVencimiento(sqlDate);
 		try {
-			System.out.println("entro al try catch, correccion prueba lunes");
 			if(cri.create(itmercancia1)) lblSave.setText("Mercancia Guardada!!!");
 			else lblSave.setText("Hubo un Error!!!");
-			cri.create(itmercancia1);
 		} catch (Exception e) {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null,e);
