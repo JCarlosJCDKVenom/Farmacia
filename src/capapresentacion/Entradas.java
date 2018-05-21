@@ -342,6 +342,7 @@ public class Entradas {
 
 		itmercancia1.setVencimiento(sqlDate);
 		try {
+			System.out.println("entro al try catch, correccion prueba lunes");
 			if(cri.create(itmercancia1)) lblSave.setText("Mercancia Guardada!!!");
 			else lblSave.setText("Hubo un Error!!!");
 			cri.create(itmercancia1);

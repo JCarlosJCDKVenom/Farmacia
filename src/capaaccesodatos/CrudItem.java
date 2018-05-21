@@ -91,7 +91,7 @@ public class CrudItem {
 	public boolean create(Mercancia itmercancia1){
 		try {
 			PreparedStatement ps = ConectarDB.getConnection().prepareStatement(
-"insert into mercancia (nombre, presentacion, proveedor, cantidad, disponible, costo, precio, lote, vencimiento) values (?, ?, ?, ?, ?, ?, ?, ?, ?) order by `mercancia`.`id` ASC");
+"insert into mercancia (nombre, presentacion, proveedor, cantidad, disponible, costo, precio, lote, vencimiento) values (?, ?, ?, ?, ?, ?, ?, ?, ?) ;");
 			ps.setString(1, itmercancia1.getNombre());
 			ps.setString(2, itmercancia1.getPresentacion());
 			ps.setString(3, itmercancia1.getProveedor());

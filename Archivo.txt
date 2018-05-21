@@ -3,24 +3,24 @@ Farmacia 'FARMA VEA'
  RUC: TOSO850220GN9 
 Baltazar N. 4  
 San Antonio Coaxomulco, Tlaxcala
-Fecha: Sun May 20 15:34:36 CDT 2018
+Fecha: Mon May 21 12:13:09 CDT 2018
 ----------------------
 
 	>>Datos del Comprador<<
 
-Numero de Factura: 17
+Numero de Factura: 18
 Nombre: Juan Carlos
 RUC: 71887663
-Direccion: jr 28 de julio 215
+Direccion: Jr 28 d julio Nro 215
 ----------------------
 Producto	     Cant.	     Precio
 
+AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382	  20.0	  1.0 $
 AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
-AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238	  55.0	  1.0 $
+ALGODON COPPON x 100 gr	  5.0	  1.0 $
+ALGODON COPPON x 100 gr	  5.0	  1.0 $
 
-Total: 		$220.0
+Total: 		$85.0
 
 ----------------------
   PERU SOFTWARE A SU SERVICIO
