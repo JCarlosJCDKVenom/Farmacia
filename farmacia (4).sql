@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 01, 2018 at 12:19 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 21-05-2018 a las 21:37:44
+-- Versión del servidor: 5.7.21
+-- Versión de PHP: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,82 +19,105 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `farmacia`
+-- Base de datos: `farmacia`
 --
-CREATE DATABASE IF NOT EXISTS `farmacia` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `farmacia` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
 USE `farmacia`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detallefactura`
+-- Estructura de tabla para la tabla `detallefactura`
 --
 
-CREATE TABLE `detallefactura` (
+DROP TABLE IF EXISTS `detallefactura`;
+CREATE TABLE IF NOT EXISTS `detallefactura` (
   `idDetalle` int(11) NOT NULL,
   `idFact` int(11) NOT NULL,
   `idMerca` int(11) NOT NULL,
   `cantidadDeta` int(11) DEFAULT NULL,
-  `importeTotal` decimal(11,5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `importeTotal` decimal(11,5) DEFAULT NULL,
+  PRIMARY KEY (`idDetalle`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `factura`
+-- Estructura de tabla para la tabla `factura`
 --
 
-CREATE TABLE `factura` (
+DROP TABLE IF EXISTS `factura`;
+CREATE TABLE IF NOT EXISTS `factura` (
   `idFac` int(11) NOT NULL,
-  `codFactura` varchar(50) NOT NULL,
+  `codFactura` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `idCliente` int(11) NOT NULL,
-  `fechaFact` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fechaFact` date DEFAULT NULL,
+  PRIMARY KEY (`idFac`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mercancia`
+-- Estructura de tabla para la tabla `facturas`
 --
 
-CREATE TABLE `mercancia` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(1000) NOT NULL,
-  `presentacion` varchar(100) DEFAULT NULL,
-  `proveedor` varchar(100) DEFAULT NULL,
+DROP TABLE IF EXISTS `facturas`;
+CREATE TABLE IF NOT EXISTS `facturas` (
+  `idFac` int(11) NOT NULL AUTO_INCREMENT,
+  `NUM_FAC` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `FECHA` date NOT NULL,
+  `ID_CLI` varchar(6) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `ID_VEN` varchar(6) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `FOR_PAG` varchar(7) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `DESCU` int(2) NOT NULL,
+  `PREC_FINAL` double(10,2) NOT NULL,
+  `TOT_DES` double(10,2) NOT NULL,
+  `VUELTO` double(10,2) NOT NULL,
+  `OBSERVAC` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `PAGO_INI` double(10,2) DEFAULT NULL,
+  PRIMARY KEY (`idFac`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mercancia`
+--
+
+DROP TABLE IF EXISTS `mercancia`;
+CREATE TABLE IF NOT EXISTS `mercancia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(1000) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `presentacion` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `proveedor` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `disponible` int(11) DEFAULT NULL,
   `costo` decimal(10,5) DEFAULT NULL,
   `precio` decimal(11,5) DEFAULT NULL,
   `descuento1` decimal(11,5) DEFAULT NULL,
   `descuento2` decimal(11,5) DEFAULT NULL,
-  `lote` varchar(80) DEFAULT NULL,
-  `vencimiento` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mercancia`
---
-
-INSERT INTO `mercancia` (`id`, `nombre`, `presentacion`, `proveedor`, `cantidad`, `disponible`, `costo`, `precio`, `descuento1`, `descuento2`, `lote`, `vencimiento`) VALUES
-(1, 'AB BRONCOL NF 1.2g Polvo para Suspension Inyectable Vial + Solv X 5 mL x 1 unid. MEDIFARMA - N25382', 'presentacion 1', 'laboratorio1', 12, 12, '2.00000', '20.00000', '0.02000', '0.03000', 'LT0001', '2018-02-20'),
-(2, 'AMBROXOL 15mg/5mL Jarabe Fco. X 120 mL x 1 unid. PORTUGAL - NG2238', 'presentacion 1', 'laboratorio1', 2, 2, '21.00000', '55.00000', '0.00140', '0.00420', 'LT0003', '2018-02-04'),
-(3, 'ALGODON COPPON x 100 gr', 'presentacion 1', 'laboratorio1', 5, 6, '4.00000', '5.00000', '0.00300', '0.00200', 'LT0003', '2018-02-13'),
-(5, 'CETIRIZINA 10mg Tableta Caja Tab. x 100 unid. NAT. Y GEN. - NG4577', 'ampolla', 'laboratorio1', 8, 8, '2.51000', '2.30000', '0.01000', '0.01000', 'LT004', '2018-02-24');
+  `lote` varchar(80) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `vencimiento` date DEFAULT NULL,
+  `idMerc_fk` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idMerc_fk` (`idMerc_fk`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mercanciacategoria`
+-- Estructura de tabla para la tabla `mercanciacategoria`
 --
 
-CREATE TABLE `mercanciacategoria` (
+DROP TABLE IF EXISTS `mercanciacategoria`;
+CREATE TABLE IF NOT EXISTS `mercanciacategoria` (
   `id` int(11) NOT NULL,
-  `nombreMed` varchar(1000) CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nombreMed` varchar(1000) CHARACTER SET latin1 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `mercanciacategoria`
+-- Volcado de datos para la tabla `mercanciacategoria`
 --
 
 INSERT INTO `mercanciacategoria` (`id`, `nombreMed`) VALUES
@@ -450,16 +475,18 @@ INSERT INTO `mercanciacategoria` (`id`, `nombreMed`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `presentacion`
+-- Estructura de tabla para la tabla `presentacion`
 --
 
-CREATE TABLE `presentacion` (
+DROP TABLE IF EXISTS `presentacion`;
+CREATE TABLE IF NOT EXISTS `presentacion` (
   `id` int(11) NOT NULL,
-  `nomPresent` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nomPresent` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `presentacion`
+-- Volcado de datos para la tabla `presentacion`
 --
 
 INSERT INTO `presentacion` (`id`, `nomPresent`) VALUES
@@ -475,16 +502,18 @@ INSERT INTO `presentacion` (`id`, `nomPresent`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proveedor`
+-- Estructura de tabla para la tabla `proveedor`
 --
 
-CREATE TABLE `proveedor` (
+DROP TABLE IF EXISTS `proveedor`;
+CREATE TABLE IF NOT EXISTS `proveedor` (
   `idProv` int(11) NOT NULL,
-  `nombreProv` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nombreProv` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`idProv`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `proveedor`
+-- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`idProv`, `nombreProv`) VALUES
@@ -498,23 +527,26 @@ INSERT INTO `proveedor` (`idProv`, `nombreProv`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
   `idUser` int(11) NOT NULL,
-  `nombreUser` varchar(100) NOT NULL,
-  `passwordUser` varchar(100) NOT NULL,
+  `nombreUser` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `passwordUser` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `activoUser` tinyint(1) DEFAULT NULL,
-  `fechaCreacion` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fechaCreacion` date DEFAULT NULL,
+  PRIMARY KEY (`idUser`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`idUser`, `nombreUser`, `passwordUser`, `activoUser`, `fechaCreacion`) VALUES
 (1, 'sa', 'sa', 1, '2018-02-14');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
