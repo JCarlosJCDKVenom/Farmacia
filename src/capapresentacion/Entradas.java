@@ -135,7 +135,7 @@ public class Entradas {
 		frmIngresoDeMercancias.getContentPane().add(scrollPane);
 		
 		lblSave = new JLabel("........");
-		lblSave.setForeground(Color.WHITE);
+		lblSave.setForeground(new Color(0, 0, 0));
 		lblSave.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblSave.setBounds(183, 397, 390, 61);
 		frmIngresoDeMercancias.getContentPane().add(lblSave);
